@@ -150,6 +150,7 @@ boot_img::boot_img(const char *image) : map(image) {
     fprintf(stderr, "Parsing boot image: [%s]\n", image);
     for (const uint8_t *addr = map.buf(); addr < map.buf() + map.sz(); ++addr) {
         format_t fmt = check_fmt(addr, map.sz());
+	fprintf(stderr, "check_fmt: %d\n", fmt);
         switch (fmt) {
         case CHROMEOS:
             // chromeos require external signing
